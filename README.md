@@ -69,11 +69,22 @@ The first run will open a browser authorization flow for Gmail — subsequent ru
 ## Project structure
 
 ```
-backend/
-├── clients/          # LLM and Telegram clients
-├── gmail/             # Gmail authentication, search, and decoding logic
-├── nodes/             # LangGraph nodes (summary, decision, draft, alert)
-├── prompts/           # Prompt templates for each node
-├── graph.py           # LangGraph graph definition
-└── main.py            # Orchestration: fetch emails, run the graph, notify
+.
+├── backend/
+│   ├── clients/            # LLM and Telegram clients
+│   ├── gmail/               # Gmail authentication, search, and decoding logic
+│   ├── nodes/               # LangGraph nodes (summary, decision, draft, alert)
+│   ├── prompts/             # Prompt templates for each node
+│   ├── credentials.json     # Google OAuth credentials (not committed)
+│   ├── token.json           # Google OAuth token, generated on first run (not committed)
+│   ├── graph.py              # LangGraph graph definition
+│   ├── main.py                # Orchestration: fetch emails, run the graph, notify
+│   └── requirements.txt
+├── docker/
+│   └── python/
+│       └── Dockerfile
+├── docker-compose.yml
+├── .env                       # your own environment variables (not committed)
+├── .env.example
+└── .gitignore
 ```
