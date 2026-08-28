@@ -4,7 +4,7 @@ services:
       context: ./backend
       dockerfile: ../docker/python/Dockerfile
     volumes:
-    - ./backend:/app
+      - ./backend:/app
     environment:
       - OLLAMA_MODEL=${SSH_OLLAMA_MODEL}
       - OLLAMA_BASE_URL=${SSH_OLLAMA_BASE_URL}
@@ -13,6 +13,16 @@ services:
       - PYTHONPATH=/app
     ports:
       - "8080:8080"
+    command: python telegram/telegram_bot.py
     stdin_open: true
     tty: true
-    
+  
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: ../docker/vue/Dockerfile
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    ports:
+      - "5173:5173"

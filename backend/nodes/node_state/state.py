@@ -9,3 +9,4 @@ class GmailActionState(TypedDict):
     alerte: str
     reponse_attendue: bool
     message_urgent_telegram: str
+    mail_id: str

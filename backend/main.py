@@ -3,7 +3,9 @@ import asyncio
 from clients.telegram_client import envoyer_message
 from gmail.gmail_agent import get_unread_emails
 
-unread_emails = get_unread_emails()
+unread_emails = get_unread_emails() 
+
+# Sert à lancer la commande python
 
 
 def construire_recap(tous_les_resultats):
@@ -18,9 +20,12 @@ def construire_recap(tous_les_resultats):
 
 tous_les_resultats = []
 
+# pour chaque mails non lus j'effectue le graph et j'ajoute à la liste totale
 for mail in unread_emails:
+    print(f"Traitement : {mail['objet_mail']}")
     resultat = graph.invoke(mail)
     tous_les_resultats.append(resultat)
+    print(f"Terminé : {mail['objet_mail']}")
 
 # 1. Construire et envoyer le récap global en premier
 recap = construire_recap(tous_les_resultats)

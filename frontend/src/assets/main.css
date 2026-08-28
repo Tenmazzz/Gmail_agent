@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+@theme {
+  --color-goku-black: #0a0a0f;
+  --color-goku-black-secondary: #16161d;
+  --color-goku-pink: #ff2d95;
+  --color-goku-pink-hover: #e6399f;
+  --color-goku-pink-hair: #F06292
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 15px;
+}

@@ -2,6 +2,7 @@ from nodes.node_state.state import GmailActionState
 from clients.ollama_client import llm
 
 def message_telegram_node(state: GmailActionState):
+    lien = f"https://mail.google.com/mail/u/0/#all/{state['mail_id']}"
     message = f"Expéditeur : {state.get('expediteur')}\n\n"
     message += f"Résumé : \n\n {state.get('resume_mail')}\n\n"
 
@@ -10,5 +11,7 @@ def message_telegram_node(state: GmailActionState):
         
     if state.get("brouillon"):
         message += f"Brouillon : \n\n {state['brouillon']}\n\n"
+
+    message += f"🔗 {lien}\n"
 
     return {"message_urgent_telegram": message}
