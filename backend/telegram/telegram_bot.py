@@ -7,6 +7,7 @@ from graph import graph
 from gmail.gmail_agent import get_unread_emails
 from telegram_ux import maintenir_typing
 from telegram_format import construire_recap, envoyer_par_morceaux, configurer_commandes
+from clients.langfuse_client import langfuse_handler
 
 
 async def lancer_agent(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -32,7 +33,9 @@ async def lancer_agent(update: Update, context: ContextTypes.DEFAULT_TYPE):
         for mail in unread_emails:
             print(f"Traitement : {mail['objet_mail']}")
             try:
-                resultat = await asyncio.to_thread(graph.invoke, mail)
+                resultat = await asyncio.to_thread(
+                    graph.invoke, mail, config={"callbacks": [langfuse_handler]}
+                )
                 tous_les_resultats.append(resultat)
                 print(f"Terminé : {mail['objet_mail']}")
             except Exception as e:
@@ -43,9 +46,9 @@ async def lancer_agent(update: Update, context: ContextTypes.DEFAULT_TYPE):
             recap = construire_recap(tous_les_resultats)
             await update.message.reply_text(recap)
 
-        for resultat in tous_les_resultats:
-            if resultat.get("alerte") != "non":
-                await update.message.reply_text(resultat["message_urgent_telegram"])
+            for resultat in tous_les_resultats:
+                if resultat.get("alerte") != "non":
+                    await update.message.reply_text(resultat["message_urgent_telegram"])
 
         if mails_en_echec:
             message_echec = f"⚠️ {len(mails_en_echec)} mail(s) n'ont pas pu être traité(s) :\n\n"

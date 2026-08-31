@@ -2,6 +2,7 @@ from graph import graph
 import asyncio
 from clients.telegram_client import envoyer_message
 from gmail.gmail_agent import get_unread_emails
+from langfuse_client import langfuse_handler
 
 unread_emails = get_unread_emails(2) 
 
@@ -23,7 +24,7 @@ tous_les_resultats = []
 # pour chaque mails non lus j'effectue le graph et j'ajoute à la liste totale
 for mail in unread_emails:
     print(f"Traitement : {mail['objet_mail']}")
-    resultat = graph.invoke(mail)
+    resultat = graph.invoke(mail, config={"callbacks": [langfuse_handler]})
     tous_les_resultats.append(resultat)
     print(f"Terminé : {mail['objet_mail']}")
 

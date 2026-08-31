@@ -2,3 +2,4 @@ langgraph
 langchain-ollama
 langchain-google-community[gmail]
 python-telegram-bot
+langfuse
