@@ -6,8 +6,8 @@ services:
     volumes:
       - ./backend:/app
     environment:
-      - OLLAMA_MODEL=${OLLAMA_MODEL}
-      - OLLAMA_BASE_URL=${OLLAMA_BASE_URL}
+      - OLLAMA_MODEL=${SSH_OLLAMA_MODEL}
+      - OLLAMA_BASE_URL=${SSH_OLLAMA_BASE_URL}
       - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
       - TELEGRAM_CHAT_ID=${TELEGRAM_CHAT_ID}
       - PYTHONPATH=/app
