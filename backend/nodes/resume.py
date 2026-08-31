@@ -1,10 +1,11 @@
 from nodes.node_state.state import GmailActionState
 from clients.ollama_client import llm
 
+# Lire le fichier prompt resume
+with open("prompts/resume.md", "r", encoding="utf-8") as f:
+    prompt_template = f.read()
+
 def resume_mail_node(state: GmailActionState):
-    # Lire le fichier prompt resume
-    with open("prompts/resume.md", "r", encoding="utf-8") as f:
-        prompt_template = f.read()
 
     # remplacer les variables par les val du state
     prompt_rempli = prompt_template.format(
@@ -14,6 +15,6 @@ def resume_mail_node(state: GmailActionState):
     )
 
     # Envoyer au llm et recup la reponse
-    resume = llm.invoke(prompt_rempli)
+    reponse = llm.invoke(prompt_rempli)
 
-    return {"resume_mail": resume.content}
+    return {"resume_mail": reponse.content}

@@ -3,7 +3,7 @@ import asyncio
 from clients.telegram_client import envoyer_message
 from gmail.gmail_agent import get_unread_emails
 
-unread_emails = get_unread_emails() 
+unread_emails = get_unread_emails(2) 
 
 # Sert à lancer la commande python
 
