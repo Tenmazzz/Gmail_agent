@@ -26,4 +26,5 @@ def envoyer_par_morceaux(texte, taille_max=4000):
 async def configurer_commandes(application):
     await application.bot.set_my_commands([
         BotCommand("lancer", "Lance l'agent mail (ex: /lancer 2 pour 2 jours)"),
+        BotCommand("lancer_date", "Lance l'agent pour une date précise (ex: /lancer_date 28-08-2026)"),
     ])

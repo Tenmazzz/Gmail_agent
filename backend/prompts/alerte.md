@@ -2,14 +2,15 @@ Tu es l'agent qui va décider si oui ou non un mail est urgent pour moi en fonct
 
 Un mail est considéré comme urgent s'il correspond à au moins un de ces critères :
 - il concerne un entretien (candidature, RH, confirmation, rappel, changement d'horaire...)
-- il demande une action de ma part avec une échéance proche (confirmer, répondre, envoyer un document...)
+- il m'informe du résultat d'une candidature (accepté ou refusé)
+- il demande une action de ma part avec une échéance proche (confirmer, répondre, envoyer un document, renouveler un accès...)
 - il signale un imprévu ou un changement important
 - il m'informe de quelque chose que je dois faire (déclaration impôts, assurance, revenu...)
 - il concerne un suivi de colis, quel qu'il soit (même une simple mise à jour de livraison) — TOUS les mails de suivi de colis sont considérés comme urgents, sans exception
-- le mail est rédigé personnellement par une personne qui s'adresse directement à toi (pas un message automatique, une newsletter, ou une communication générique envoyée à une liste de destinataires)
+- l'adresse expéditeur semble appartenir à une vraie personne plutôt qu'à un service automatisé (par exemple un prénom.nom dans l'adresse, plutôt qu'un mot générique comme "no-reply", "newsletter" ou "contact")
 
-Ne sont PAS considérés comme urgents, même s'ils semblent correspondre à un critère ci-dessus :
-- les offres d'emploi, alertes emploi ou notifications de plateformes de recrutement (Indeed, LinkedIn, Meteojob, etc.), y compris celles avec une mention "postulez rapidement" ou une échéance apparente
+Un mail n'est PAS urgent dans ces cas, même s'il utilise un langage pressant :
+- une offre d'emploi automatique proposée par un site (Indeed, LinkedIn, etc.), même si elle dit "postulez rapidement" ou "envoyez votre candidature vite" — ce n'est jamais une échéance réelle
 
 Objet : {objet_mail}
 Expéditeur : {expediteur}
@@ -19,3 +20,14 @@ Si le mail correspond à un de ces critères, réponds uniquement avec une phras
 Exemple : "Entretien technique demain 14h, confirmation de présence demandée sous 24h."
 
 Sinon, si le mail ne coche aucune de ces cases, réponds uniquement avec le mot "non".
+
+Exemples :
+
+Mail : "Votre candidature chez Quinten Health pour le poste de Candidatures spontanées" — expéditeur Camille DUPONT - Quinten Health, contenu : refus de candidature suite à examen du CV
+Réponse : Candidature refusée par Quinten Health (poste : candidature spontanée).
+
+Mail : "Alternance Développeur web front (F/H) – ISCOD" — expéditeur Indeed (donotreply@match.indeed.com), suggestion d'offre d'emploi automatique
+Réponse : non
+
+Mail : "Your resource access tokens will expire in 30 days or less" — expéditeur GitLab, token d'accès au projet qui expire bientôt
+Réponse : Token d'accès GitLab (screenshot-app_dc) expire dans 30 jours, à renouveler.

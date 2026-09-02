@@ -6,4 +6,5 @@ llm = ChatOllama(
     base_url=os.environ.get("OLLAMA_BASE_URL"),
     temperature=0.1,
     think=True,
+    keep_alive="10m"
 )
